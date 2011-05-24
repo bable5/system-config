@@ -19,9 +19,12 @@ import XMonad.Layout.LayoutCombinators
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Tabbed
 import XMonad.Layout.SimpleFloat
+import XMonad.Layout.Circle
 import XMonad.Layout.WindowArranger
 import XMonad.Layout.Accordion
 import XMonad.Config.Desktop
+import XMonad.Layout.Reflect
+import XMonad.Layout.MultiToggle
 
 --Themes
 import XMonad.Util.Themes
@@ -29,10 +32,16 @@ import XMonad.Util.Themes
 main :: IO()
 main = xmonad =<< mooneyConfig
 
-mooneyKeymap = []
+--Compose separate keymaps together here.
+mooneyKeymap = windowKeys
+modm = mod4Mask
+
 
 mooneyConfig = do
     xmobar <- spawnPipe "xmobar"
+    {- Is this call lugging the system?
+     - mapM spawn ["thunderbird", "chromium-browser"]-}
+    Main.setBackground
     return $ defaultConfig
         { workspaces            = ["home", "var", "dev", "mail", "web", "doc", "multimedia"] ++
                                     map show [8 .. 9 :: Int] 
@@ -41,15 +50,15 @@ mooneyConfig = do
         , focusedBorderColor    = "#11cc34"
         , focusFollowsMouse     = False
         , terminal              = "gnome-terminal"
-        , modMask               = mod4Mask
+        , modMask               = modm
         , manageHook            = newManageHook
         , logHook               = myDynLog xmobar
         , layoutHook            = avoidStruts $ 
                                   --decorated
                                   allLays
         , handleEventHook       = serverModeEventHook
-        , startupHook           = return () >> checkKeymap mooneyConfig mooneyKeymap
-        } 
+        --, startupHook           = return () >> checkKeymap mooneyConfig mooneyKeymap
+        } `additionalKeys` mooneyKeymap
         where
             --layouts
             tiled       = Tall 1 (3/100) (1/2)
@@ -57,13 +66,13 @@ mooneyConfig = do
             mytabs      = tabbed shrinkText (theme smallClean)
             --decorated   = simpleFloat' shrinkText (theme smallClean)
             allLays   = windowArrange $
-                            tiled 
+                           ( tiled 
                             ||| spr 
                             ||| noBorders mytabs
                             ||| noBorders Full
-                            ||| Mirror tiled   
-                                       
-                          --  ||| Accordion
+                           -- ||| Mirror tiled   
+                           -- ||| Circle
+                           )
 
             --manageHook
             myManageHook = composeAll [ resource =? "win"          --> doF (W.shift "doc") --xpdf??
@@ -81,4 +90,15 @@ mooneyConfig = do
                             , ppOutput = hPutStrLn h
                             }
 
+pictures = "/home/sean/Pictures"
+--bgimage = pictures ++ "/1440x900/HDFlare.jpg"
+bgimage = pictures ++ "/1600x1200/TechnoBlack.jpg"
+bgprog = "feh --bg-scale "
+setBackground = spawn $ bgprog ++ bgimage
 
+windowKeys = []
+{- the REFLECTX,Y seems to be broken and crashes when looping around on the list of layouts.
+ - Not using is, so not using these key bindings.
+[  ((modm .|. controlMask, xK_x), sendMessage $ Toggle REFLECTX)
+              , ((modm .|. controlMask, xK_y), sendMessage $ Toggle REFLECTY)
+              ]-}
