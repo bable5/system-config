@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/home/sean/src_code/java/QualitasCorpus/QualitasCorpus-20101126r/Systems/fitjava/fitjava-1.1/src/examples'
+let g:netrw_dirhist_2='/home/sean/src_code/workspace/static-commutativity-git/src'
+let g:netrw_dirhist_3='/home/sean/.xmonad'
