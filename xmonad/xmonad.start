@@ -15,5 +15,8 @@ if [ -x /usr/bin/gnome-power-manager ] ; then
     gnome-power-manager &
 fi
 
-#exec ssh-agent 
+if [ -x /usr/bin/nautilus ] ; then
+   nautilus --no-desktop -n &
+fi
+
 exec xmonad
