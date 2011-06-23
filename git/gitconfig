@@ -12,5 +12,8 @@
             
 
     quick-summary = log --oneline -10
+    cvsmerge = merge --no-ff --log
+    ignore-changes = update-index --assume-unchanged
+    track-changes = update-index --no-assume-unchanged
 [color]
 	ui = auto
