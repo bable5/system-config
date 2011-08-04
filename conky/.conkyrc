@@ -101,13 +101,13 @@ Swap: $swapperc% ${color b87333}${swapbar 6}$color
 Root: ${fs_free_perc /}% ${color b87333}${fs_bar 6 /}$color
 Home: ${fs_free_perc /home}%  ${color b87333}${fs_bar 6 /home}$color
 
-${color orange}NETWORK (${addr eth0}) ${hr 2}$color
-Down: $color${downspeed eth0} k/s ${alignr}
-${downspeedgraph eth0 25,140 ff0000 0000ff} 
-${alignr}Total: ${totaldown eth0} 
-Up: ${upspeed eth0} k/s
-${upspeedgraph eth0 25,140 ff0000 0000ff}$color
-${alignr}Total: ${totalup eth0}
+${color orange}NETWORK (${addr wlan0}) ${hr 2}$color
+Down: $color${downspeed wlan00} k/s ${alignr}
+${downspeedgraph wlan0 25,140 ff0000 0000ff} 
+${alignr}Total: ${totaldown wlan0} 
+Up: ${upspeed wlan0} k/s
+${upspeedgraph wlan0 25,140 ff0000 0000ff}$color
+${alignr}Total: ${totalup wlan0}
 Inbound: ${tcp_portmon 1 32767 count} 
 Outbound: ${tcp_portmon 32768
 61000 count}
