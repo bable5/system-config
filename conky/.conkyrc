@@ -19,7 +19,7 @@ own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
 double_buffer yes
 
 # fiddle with window
-use_spacer yes
+use_spacer no
 use_xft no
 
 # Update interval in seconds
@@ -41,10 +41,10 @@ uppercase no # set to yes if you want all text to be in uppercase
 stippled_borders 3
 
 # border margins
-border_margin 9
+border_margin 0
 
 # border width
-border_width 10
+border_width 0
 
 # max width
 maximum_width 200
@@ -85,8 +85,9 @@ ${color orange}SYSTEM ${hr 2}$color
 $nodename $sysname $kernel 
 
 ${color orange}CPU ${hr 2}$color
-${freq}MHz Load: ${loadavg} Temp: ${acpitemp}
-${color b87333}$cpubar $color
+CPU1: ${freq cpu1}MHz ${color b87333}${cpubar cpu1 8,90} $color
+CPU2: ${freq cpu2}MHz ${color b87333}${cpubar cpu2 8,90} $color
+Load: ${loadavg} Temp: ${acpitemp}
 ${cpugraph 000000 b87333}
 NAME PID CPU% MEM%
 ${top name 1} ${top pid 1} ${top cpu 1} ${top mem 1}
@@ -104,19 +105,16 @@ Shared: ${fs_free_perc /media/shared}%  ${color b87333}${fs_bar 6 /media/shared}
 Multimedia: ${fs_free_perc /media/multimedia}%  ${color b87333}${fs_bar 6 /media/multimedia}$color
 
 ${color orange}NETWORK (${addr eth0}) ${hr 2}$color
-Down: $color${downspeed eth0} k/s ${alignr}
-${downspeedgraph eth0 25,140 ff0000 0000ff} 
-${alignr}Total: ${totaldown eth0} 
-Up: ${upspeed eth0} k/s
-${upspeedgraph eth0 25,140 ff0000 0000ff}$color
-${alignr}Total: ${totalup eth0}
-Inbound: ${tcp_portmon 1 32767 count} 
-Outbound: ${tcp_portmon 32768
-61000 count}
-${alignr}Total: ${tcp_portmon 1 65535 count}
+Down: $color${downspeed eth0} k/s ${alignr} ${alignr}Total: ${totaldown eth0} 
+${downspeedgraph eth0 25,200 b87333 ff000000 -t} 
+Up: ${upspeed eth0} k/s ${alignr}Total: ${totalup eth0}
+${upspeedgraph eth0 25,200 b87333 ff000000 -t }$color
+#
+${color orange}MUSIC${hr 2} $color
+${if_running amarokapp}
+Well, something is playing...
+$endif
+#
+${color orange}WEATHER$color
+${alignc}${execi 300 ~/.scripts/weather.sh "50014"}
 
-${color orange}LOGGING ${hr 2}$color
-${execi 30 tail -n3 /var/log/messages | fold -w50}
-
-${color orange}FORTUNE ${hr 2}$color
-${execi 120 fortune -s | fold -w30}
