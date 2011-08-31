@@ -6,6 +6,24 @@ set smartindent
 set showmatch
 set expandtab
 set number
+set mouse=a
+set makeprg=ant\ -emacs
+
+set tags+=.tags
+
+set nofoldenable
+set foldmethod=syntax
+
+syntax on
+
+" status line information
+set laststatus=2
+set statusline=%f\ %m\ %{fugitive#statusline()}\ %=%([%l,%v\-%P]%)
+
+" VimTip 1386
+" Better word suggestion on ^p
+:set completeopt=longest,menuone
+:inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " ~/.vimrc (configuration file for vim only)
 " skeletons
@@ -41,14 +59,18 @@ function! SKEL_spec()
 	setf spec
 endfunction
 autocmd BufNewFile	*.spec	call SKEL_spec()
+
 " filetypes
 filetype plugin on
 filetype indent on
 
-syntax on
-
-" Map NERDTree shortcut
-map <F2> :NERDTreeToggle<CR>
 " Toggle line numbers
 map <F1> :set nu!<CR>
+" Map NERDTree shortcut
+map <F2> :NERDTreeToggle<CR>
+map <F3> :set paste!<CR>
+map <F5> :make<CR>
+" Generate tags for cxx project
+map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+
 " ~/.vimrc ends here
