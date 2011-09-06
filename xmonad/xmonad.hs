@@ -62,7 +62,7 @@ mooneyConfig = do
                                   --decorated
                                   allLays
         , handleEventHook       = serverModeEventHook
-        } `additionalKeysP` (mediaKeys ++ utilityKeys)
+        } `additionalKeysP` (mediaKeys ++ utilityKeys ++ wmKeys)
         where
             --layouts
             tiled       = Tall 1 (3/100) (1/2)
@@ -110,9 +110,14 @@ mediaKeys = [  ("<XF86AudioLowerVolume>",  lowerVolume 3 >> return ())
 
 utilityKeys = [ ("<XF86Calculator>" , calculator)
                ,("<XF86WWW>"        , webbrowser)
-               --,(modm, xK_F12       , ide)
+               ,("M-x e"       , ide)
               ]
 
+--Window Management
+wmKeys = [ (w ++ " s", sendMessage $ JumpToLayout "Spiral") 
+          ,(w ++ " t", sendMessage $ JumpToLayout "Tall")
+          ,(w ++ " f" sendMessage $ JumpToLayout "Full")
+        ] where w ="M-w"
 
 --bgImageName = "/home/sean/Pictures/78215-corridor.JPG "
 bgImageName = "/home/sean/Pictures/99076-2222.jpg"
