@@ -44,6 +44,8 @@ main = xmonad =<< mooneyConfig
 mooneyConfig = do
     Main.setBackground
     xmobar <- spawnPipe "xmobar"
+    spawn "conky"
+    spawn "/home/sean/.conky/calendar/calendar.sh"
     return $ defaultConfig
         { workspaces            = ["home", "var", "dev", "mail", "web", "doc", "media"] ++
                                     map show [8 .. 9 :: Int] 
@@ -108,11 +110,15 @@ mediaKeys = [  ("<XF86AudioLowerVolume>",  lowerVolume 3 >> return ())
 
 utilityKeys = [ ("<XF86Calculator>" , calculator)
                ,("<XF86WWW>"        , webbrowser)
+               --,(modm, xK_F12       , ide)
               ]
 
-bgImageName = "/home/sean/Pictures/78215-corridor.JPG "
+
+--bgImageName = "/home/sean/Pictures/78215-corridor.JPG "
+bgImageName = "/home/sean/Pictures/99076-2222.jpg"
 setBackground = spawn $ "feh --bg-scale " ++ bgImageName
 
 calculator = spawn "gnome-calculator"
 webbrowser = spawn "chromium-browser"
+ide        = spawn "eclipse"
 
