@@ -9,6 +9,7 @@ module Main (main) where
 import XMonad hiding ( (|||) )
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(checkKeymap, additionalKeysP)
+--import XMonad.Util.Dzen
 import System.IO
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
@@ -39,7 +40,7 @@ main = xmonad =<< mooneyConfig
 
 --workspaceAssignments = [("win", "doc"), ("firefox", "web"), ("chromium-browser", "web"), ("amarok", "multimedia")]
 
-
+--alert = dzenConfig return . show
 
 mooneyConfig = do
     Main.setBackground
@@ -116,8 +117,8 @@ utilityKeys = [ ("<XF86Calculator>" , calculator)
 --Window Management
 wmKeys = [ (w ++ " s", sendMessage $ JumpToLayout "Spiral") 
           ,(w ++ " t", sendMessage $ JumpToLayout "Tall")
-          ,(w ++ " f" sendMessage $ JumpToLayout "Full")
-        ] where w ="M-w"
+          ,(w ++ " f", sendMessage $ JumpToLayout "Full")
+        ] where w ="M-v"
 
 --bgImageName = "/home/sean/Pictures/78215-corridor.JPG "
 bgImageName = "/home/sean/Pictures/99076-2222.jpg"
