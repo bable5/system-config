@@ -41,7 +41,7 @@ uppercase no # set to yes if you want all text to be in uppercase
 stippled_borders 3
 
 # border margins
-border_margin 9
+#border_margin 9
 
 # border width
 border_width 10
@@ -75,7 +75,8 @@ gap_x 10
 gap_y 10
 
 #Other colors
-copper b87333
+#not sure what syntax is to define constant.
+#copper b87333
 
 # stuff after ‘TEXT’ will be formatted on screen
 
@@ -84,8 +85,12 @@ $color
 ${color orange}SYSTEM ${hr 2}$color
 $nodename $sysname $kernel 
 
+${battery_bar 25, 200}
+${battery} $battery_time
+
 ${color orange}CPU ${hr 2}$color
-${freq}MHz Load: ${loadavg} Temp: ${acpitemp}
+${freq} MHz Load: ${loadavg} 
+Temp: ${acpitemp}
 ${color b87333}$cpubar $color
 ${cpugraph 000000 b87333}
 NAME PID CPU% MEM%
@@ -102,15 +107,15 @@ Root: ${fs_free_perc /}% ${color b87333}${fs_bar 6 /}$color
 Home: ${fs_free_perc /home}%  ${color b87333}${fs_bar 6 /home}$color
 
 ${color orange}NETWORK (${addr wlan0}) ${hr 2}$color
-Down: $color${downspeed wlan00} k/s ${alignr}
-${downspeedgraph wlan0 25,140 ff0000 0000ff} 
-${alignr}Total: ${totaldown wlan0} 
-Up: ${upspeed wlan0} k/s
-${upspeedgraph wlan0 25,140 ff0000 0000ff}$color
-${alignr}Total: ${totalup wlan0}
-Inbound: ${tcp_portmon 1 32767 count} 
-Outbound: ${tcp_portmon 32768
-61000 count}
+wired: ${addr eth0} 
+wireless: ${addr wlan0}
+
+Down: $color${downspeed wlan00} k/s ${alignr} ${alignr}Total: ${totaldown wlan0} 
+${downspeedgraph wlan0 25,200 ff0000 0000ff} 
+Up: ${upspeed wlan0} k/s ${alignr}Total: ${totalup wlan0}
+${upspeedgraph wlan0 25,200 ff0000 0000ff}$color
+#Inbound: ${tcp_portmon 1 32767 count} 
+#Outbound: ${tcp_portmon 32768 61000 count}
 ${alignr}Total: ${tcp_portmon 1 65535 count}
 
 ${color orange}LOGGING ${hr 2}$color
