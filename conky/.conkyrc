@@ -114,9 +114,6 @@ Down: $color${downspeed wlan00} k/s ${alignr} ${alignr}Total: ${totaldown wlan0}
 ${downspeedgraph wlan0 25,200 ff0000 0000ff} 
 Up: ${upspeed wlan0} k/s ${alignr}Total: ${totalup wlan0}
 ${upspeedgraph wlan0 25,200 ff0000 0000ff}$color
-#Inbound: ${tcp_portmon 1 32767 count} 
-#Outbound: ${tcp_portmon 32768 61000 count}
-${alignr}Total: ${tcp_portmon 1 65535 count}
 
 ${color orange}LOGGING ${hr 2}$color
 ${execi 30 tail -n3 /var/log/messages | fold -w50}
