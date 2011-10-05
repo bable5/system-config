@@ -147,12 +147,16 @@ alias svnignore='python /home/sean/bin/svnignore.py'
 alias svn-add-all-new='svn st|grep ^?|sed s/?//|xargs svn add $1'
 
 #end from snippits
-
+alias jsca-src='cd /home/sean/srccode/eclipse_workspaces/program-analysis/static-commutativity-git'
 
 alias hibernate='sudo /etc/acpi/hibernate.sh'
 
 alias testdone='playsound /usr/share/sounds/KDE-Sys-App-Negative.ogg'
 alias playvideo='mplayer -fs'
+alias nmaphome='nmap -sP 192.168.1.0/24'
+
+alias git-recent-branches="git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname)' | cut -d / -f 3-"
+
 #PAN_CP=.:/home/sean/.bin/panini_rt.jar
 
 export GOROOT=/opt/CompilerTools/go
