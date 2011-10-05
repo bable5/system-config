@@ -1,0 +1,21 @@
+alias ls='ls --color=auto'
+alias ll='ls -l'
+alias la='ls -a'
+
+alias udiff='diff -u'
+
+alias svnignore='python /home/sean/bin/svnignore.py'
+
+#from snippits.dzone.com/posts/show/4722
+alias svn-add-all-new='svn st | grep ^? | sed s/?// | xargs svn add $1'
+#end snippits.
+
+alias cvs-changes='cvs diff'
+alias cvs-up='cvs up -d'
+
+alias dnscheck='ping 208.67.222.222'
+
+alias playvideo='mplayer -fs -cache 8192'
+
+alias jsca-src='cd /home/sean/src_code/workspace/static-commutativity-git'
+alias root-mysql='mysql --user=root -p'
