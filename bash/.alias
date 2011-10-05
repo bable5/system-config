@@ -19,3 +19,5 @@ alias playvideo='mplayer -fs -cache 8192'
 
 alias jsca-src='cd /home/sean/src_code/workspace/static-commutativity-git'
 alias root-mysql='mysql --user=root -p'
+
+alias git-recent-branches="git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname)' | cut -d / -f 3-"
