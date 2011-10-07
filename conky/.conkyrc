@@ -109,6 +109,8 @@ Home: ${fs_free_perc /home}%  ${color b87333}${fs_bar 6 /home}$color
 ${color orange}NETWORK (${addr wlan0}) ${hr 2}$color
 wired: ${addr eth0} 
 wireless: ${addr wlan0}
+ESSID: $alignr ${wireless_essid wlan0}
+Connection quality: $alignr ${wireless_link_qual_perc wlan0}%
 
 Down: $color${downspeed wlan00} k/s ${alignr} ${alignr}Total: ${totaldown wlan0} 
 ${downspeedgraph wlan0 25,200 ff0000 0000ff} 
