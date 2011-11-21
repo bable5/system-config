@@ -42,3 +42,18 @@ function git-pull-all {
     done
 }
 
+function clone-missing-git-repos {
+    if [ $# -lt 2 ] ; then
+        echo "Usage <url> <file.lst>"
+        return 1
+    fi
+    repourl=$1
+    listfile=$2
+    
+    for repo in $(cat $listfile) ; do
+        if [ ! -d $repo ] ; then
+            git clone "$repourl/$repo.git" 
+        fi
+    done
+}
+
