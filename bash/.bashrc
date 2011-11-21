@@ -204,4 +204,7 @@ function find_git_branch {
 
 PROMPT_COMMAND="find_git_branch; $PROMPT_COMMAND"
 
+source /home/sean/bin/helpers.sh
+
 fortune
+

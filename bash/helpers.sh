@@ -30,14 +30,30 @@ function git-pull-all {
         echo "usage: git-pull-all <repolist>"
         return 1
     fi
+  
+    git-doall "pull" $1
+}
+
+function git-push-all {
+    if [ "$#" -lt 1 ] ; then
+        echo "usage: git-push-all <repolist>"
+        return 1
+    fi
+  
+    git-doall "push" $1
+}
+
+function git-doall {
+    gitcmd=$1
+    repolist=$2
+
     there=$(pwd)    
-    repolist=$1
     
     for repo in $(cat $repolist) ; do
-        echo "Pulling $repo"
+        echo "$gitcmd-ing $repo"
         cd $repo
         echo $(pwd)
-        git pull
+        git "$gitcmd"
         cd $there
     done
 }
