@@ -148,6 +148,7 @@ alias svn-add-all-new='svn st|grep ^?|sed s/?//|xargs svn add $1'
 
 #end from snippits
 alias jsca-src='cd /home/sean/srccode/eclipse_workspaces/program-analysis/static-commutativity-git'
+alias cd-ccs='cd /home/sean/srccode/java/analysis_examples/comm-case-study'
 
 alias hibernate='sudo /etc/acpi/hibernate.sh'
 
@@ -156,6 +157,9 @@ alias playvideo='mplayer -fs'
 alias nmaphome='nmap -sP 192.168.1.0/24'
 
 alias git-recent-branches="git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname)' | cut -d / -f 3-"
+
+alias mineserv='java -jar -Xmx1024M -Xms1024M /home/sean/bin/minecraft/minecraft_server.jar'
+alias minecraft='java -jar -Xmx1024M -Xms512M /home/sean/bin/minecraft/minecraft.jar'
 
 #PAN_CP=.:/home/sean/.bin/panini_rt.jar
 
@@ -169,7 +173,7 @@ alias 6l='$GOBIN/61'
 
 #PATH=$PATH:$GOBIN
 export ANDROID_HOME=/opt/android-sdk
-PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+PATH=$PATH:/usr/games:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
 PATH=$PATH:~/.cabal/bin:/home/sean/bin
 
@@ -207,4 +211,3 @@ PROMPT_COMMAND="find_git_branch; $PROMPT_COMMAND"
 source /home/sean/bin/helpers.sh
 
 fortune
-
