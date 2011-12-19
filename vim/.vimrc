@@ -6,6 +6,14 @@ set smartindent
 set showmatch
 set expandtab
 set number
+set mouse=a
+"set makeprg=ant\ -emacs
+
+"folding: http://smartic.us/2009/04/06/code-folding-in-vim/
+set foldmethod=indent   "fold based on indent
+set foldnestmax=10      "deepest fold is 10 levels
+set nofoldenable        "dont fold by default
+set foldlevel=1         "this is just what i use
 
 " ~/.vimrc (configuration file for vim only)
 " skeletons
@@ -45,10 +53,17 @@ autocmd BufNewFile	*.spec	call SKEL_spec()
 filetype plugin on
 filetype indent on
 
+au filetype java setlocal mp=ant\ -emacs
+
 syntax on
 
 " Map NERDTree shortcut
 map <F2> :NERDTreeToggle<CR>
 " Toggle line numbers
 map <F1> :set nu!<CR>
+map <F5> :make <CR>
+map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+
+:command! -nargs=+ Calc :py print <args>
+:py from math import *
 " ~/.vimrc ends here
