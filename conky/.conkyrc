@@ -119,4 +119,4 @@ ${upspeedgraph wlan0 25,200 b87333 ff0000 -t}$color
 #${execi 30 tail -n3 /var/log/messages | fold -w50}
 #
 ${color orange}TODO ${hr 2}$color
-${execpi 120 todo ls | fold -w50}
+${execpi 120 todo -d /home/sean/.todo/conky-config ls | fold -w50}
