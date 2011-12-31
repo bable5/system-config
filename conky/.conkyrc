@@ -84,13 +84,12 @@ TEXT
 $color
 ${color orange}SYSTEM ${hr 2}$color
 $nodename $sysname $kernel 
-
 #${battery_bar 25, 200}
 ${battery} $battery_time
 
 ${color orange}CPU ${hr 2}$color
 ${freq} MHz Load: ${loadavg} 
-Temp: ${acpitemp}
+#Temp: ${acpitemp}
 ${color b87333}$cpubar $color
 ${cpugraph 000000 b87333}
 NAME ${alignr}PID CPU% MEM%
@@ -113,10 +112,11 @@ ESSID: $alignr ${wireless_essid wlan0}
 Connection quality: $alignr ${wireless_link_qual_perc wlan0}%
 
 Down: $color${downspeed wlan00} k/s ${alignr} ${alignr}Total: ${totaldown wlan0} 
-${downspeedgraph wlan0 25,200 ff0000 0000ff} 
+${downspeedgraph wlan0 25,200 b87333 ff0000 -t} 
 Up: ${upspeed wlan0} k/s ${alignr}Total: ${totalup wlan0}
-${upspeedgraph wlan0 25,200 ff0000 0000ff}$color
-
-${color orange}LOGGING ${hr 2}$color
-${execi 30 tail -n3 /var/log/messages | fold -w50}
-
+${upspeedgraph wlan0 25,200 b87333 ff0000 -t}$color
+#${color orange}LOGGING ${hr 2}$color
+#${execi 30 tail -n3 /var/log/messages | fold -w50}
+#
+${color orange}TODO ${hr 2}$color
+${execpi 120 todo ls | fold -w50}
