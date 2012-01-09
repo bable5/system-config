@@ -19,7 +19,7 @@ own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
 double_buffer yes
 
 # fiddle with window
-use_spacer no
+use_spacer none
 use_xft no
 
 # Update interval in seconds
@@ -41,13 +41,13 @@ uppercase no # set to yes if you want all text to be in uppercase
 stippled_borders 3
 
 # border margins
-border_margin 0
+border_margin 50
 
 # border width
-border_width 0
+border_width 10
 
 # max width
-maximum_width 200
+maximum_width 250
 
 # Default colors and also border colors, grey90 == #e5e5e5
 #default_color grey
@@ -71,50 +71,65 @@ alignment top_right
 #alignment bottom_right
 
 # Gap between borders of screen and text
-gap_x 10
+gap_x 25
 gap_y 10
 
 #Other colors
-copper b87333
+#copper
+color1 b87333
 
 # stuff after ‘TEXT’ will be formatted on screen
 
 TEXT
 $color
 ${color orange}SYSTEM ${hr 2}$color
-$nodename $sysname $kernel 
+${alignr}$nodename 
+${alignr}$kernel
 
 ${color orange}CPU ${hr 2}$color
-CPU1: ${freq cpu1}MHz ${color b87333}${cpubar cpu1 8,90} $color
-CPU2: ${freq cpu2}MHz ${color b87333}${cpubar cpu2 8,90} $color
+CPU1: ${freq cpu1} MHz  ${color1}${cpubar cpu1 } $color
+CPU2: ${freq cpu2} MHz  ${color1}${cpubar cpu2 } $color
+CPU3: ${freq cpu3} MHz  ${color1}${cpubar cpu3 } $color
+CPU4: ${freq cpu4} MHz  ${color1}${cpubar cpu4 } $color
 Load: ${loadavg} Temp: ${acpitemp}
 ${cpugraph 000000 b87333}
-NAME PID CPU% MEM%
-${top name 1} ${top pid 1} ${top cpu 1} ${top mem 1}
-${top name 2} ${top pid 2} ${top cpu 2} ${top mem 2}
-${top name 3} ${top pid 3} ${top cpu 3} ${top mem 3}
-${top name 4} ${top pid 4} ${top cpu 4} ${top mem 4}
+NAME $alignr PID CPU%  MEM%
+${top name 1} $alignr ${top pid 1} ${top cpu 1} ${top mem 1}
+${top name 2} $alignr ${top pid 2} ${top cpu 2} ${top mem 2}
+${top name 3} $alignr ${top pid 3} ${top cpu 3} ${top mem 3}
+${top name 4} $alignr ${top pid 4} ${top cpu 4} ${top mem 4}
 
 ${color orange}MEMORY / DISK ${hr 2}$color
-RAM: $memperc% ${color b87333}${membar 6}$color
-Swap: $swapperc% ${color b87333}${swapbar 6}$color
+RAM: $memperc% ${color1}${membar 6}$color
+Swap: $swapperc% ${color1}${swapbar 6}$color
 
-Root: ${fs_free_perc /}% ${color b87333}${fs_bar 6 /}$color
-Home: ${fs_free_perc /home}%  ${color b87333}${fs_bar 6 /home}$color
-Shared: ${fs_free_perc /media/shared}%  ${color b87333}${fs_bar 6 /media/shared}$color
-Multimedia: ${fs_free_perc /media/multimedia}%  ${color b87333}${fs_bar 6 /media/multimedia}$color
+Root: ${fs_free_perc /}% ${color1}${fs_bar 6 /}$color
+Home: ${fs_free_perc /home}%  ${color1}${fs_bar 6 /home}$color
+#Shared: ${fs_free_perc /media/shared}%  ${color1}${fs_bar 6 /media/shared}$color
+#Multimedia: ${fs_free_perc /media/multimedia}%  ${color1}${fs_bar 6 /media/multimedia}$color
 
-${color orange}NETWORK (${addr eth0}) ${hr 2}$color
-Down: $color${downspeed eth0} k/s ${alignr} ${alignr}Total: ${totaldown eth0} 
-${downspeedgraph eth0 25,200 b87333 ff000000 -t} 
-Up: ${upspeed eth0} k/s ${alignr}Total: ${totalup eth0}
-${upspeedgraph eth0 25,200 b87333 ff000000 -t }$color
+#Network Information
+${color orange}NETWORK (${addr eth1}) ${hr 2}$color
+Down: $color${downspeed eth1} ${alignr} ${alignr}Total: ${totaldown eth1} 
+${downspeedgraph eth1 25,250 b87333 ff000000 -t} 
+Up: ${upspeed eth1} ${alignr}Total: ${totalup eth1}
+${upspeedgraph eth1 25,250 b87333 ff000000 -t }$color
+
+#Mixer Information
+${color orange}MIXER ${hr 2}$color
+Master Volume ${mixer} 
+
 #
-${color orange}MUSIC${hr 2} $color
-${if_running amarokapp}
+${color orange}MUSIC ${hr 2} $color
+${if_running amarok}
 Well, something is playing...
+$else
+Nothing playing...
 $endif
 #
-${color orange}WEATHER$color
+${color orange}WEATHER ${hr 2} $color
 ${alignc}${execi 300 ~/.scripts/weather.sh "50014"}
+#
+${color orange}TODO ${hr 2}$color
+${execpi 120 todo -d /home/sean/.todo/conky-config ls | fold -w50}
 
