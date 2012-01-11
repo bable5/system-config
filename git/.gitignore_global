@@ -1,0 +1,11 @@
+#Based on github suggestions
+#Compiled/derived sources#
+#########################
+*.class
+*.o
+*.so
+
+#Editor files#
+*.bak
+*.sw[p|o]
+*.log
