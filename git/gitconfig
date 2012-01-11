@@ -17,3 +17,5 @@
     track-changes = update-index --no-assume-unchanged
 [color]
 	ui = auto
+[core]
+	excludesfile = /home/sean/.gitignore_global
