@@ -1,6 +1,7 @@
 [user]
 	name = Sean Mooney
 	email = bable4@gmail.com
+	signingkey = 0x2B323EC7
 [color]
     ui = auto
 [alias]
