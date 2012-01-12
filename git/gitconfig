@@ -14,11 +14,7 @@
     hist = log --pretty=format:\"%Cgreen%h%Creset %ad | %s%d %Cblue[%an]%Creset \" --graph --date=short
     ignore-changes = update-index --assume-unchanged
     track-changes = update-index --no-assume-unchanged
-    cvsmerge = merge --no-ff --log
-
 [core]
 	editor = vim
 	excludesfile = /home/sean/.gitignore_global
-[color]
-	ui = auto
 
