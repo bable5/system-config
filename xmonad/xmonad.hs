@@ -111,7 +111,10 @@ mediaKeys = [  ("<XF86AudioLowerVolume>",  lowerVolume 3 >> return ())
 
 utilityKeys = [ ("<XF86Calculator>" , calculator)
                ,("<XF86WWW>"        , webbrowser)
-               ,("M-x e"       , ide)
+               ,("M-x w"            , webbrowser)
+               ,("M-x t"            , email)
+               ,("M-x e"            , ide)
+               ,("M-x a"            , musicplayer)
               ]
 
 --Window Management
@@ -122,9 +125,13 @@ wmKeys = [ (w ++ " s", sendMessage $ JumpToLayout "Spiral")
 
 --bgImageName = "/home/sean/Pictures/78215-corridor.JPG "
 bgImageName = "/home/sean/Pictures/99076-2222.jpg"
+--bgImageName = "/home/sean/Pictures/backgrounds/Power_of_Words_by_Antonio_Litterio.jpg"
+--bgImageName = "/home/sean/Pictures/backgrounds/haskellwp.png"
 setBackground = spawn $ "feh --bg-scale " ++ bgImageName
 
-calculator = spawn "gnome-calculator"
-webbrowser = spawn "chromium-browser"
-ide        = spawn "eclipse"
+calculator  = spawn "gnome-calculator"
+webbrowser  = spawn "chromium-browser"
+email       = spawn "thunderbird"
+ide         = spawn "eclipse"
+musicplayer = spawn "amarok"
 
