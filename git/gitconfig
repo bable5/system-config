@@ -17,4 +17,6 @@
 [core]
 	editor = vim
 	excludesfile = /home/sean/.gitignore_global
+[url "git+ssh://bable5.homeip.net/"]
+    insteadof = b5:
 
