@@ -73,3 +73,21 @@ function clone-missing-git-repos {
     done
 }
 
+function make-on-change {
+    if [ $# -lt 2 ] ; then
+        echo "Nothing to watch!"
+        return
+    else
+        dir=$1
+        shift 
+        #echo "Remaining args $@"
+    fi
+    
+
+    while inotifywait -r -e modify $dir ; do
+        make $@
+    done
+}
+
+complete -F _todo todo
+
