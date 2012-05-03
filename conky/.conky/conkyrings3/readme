@@ -1,0 +1,10 @@
+clock_rings.lua and the conkyringsbgnd.png should be placed in a folder at 
+~/.config/conky/
+
+the setup is arranged for netbook resolution at 1024x600 but should work for 
+other resolutions
+
+you will also need a weather.com xoap license and will need to change both the 
+.conkyrc and clock_rings.lua for your location
+
+jpope
