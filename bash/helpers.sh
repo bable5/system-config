@@ -73,6 +73,48 @@ function clone-missing-git-repos {
     done
 }
 
+# Create a git-controlled mirror of a CVS module
+# Assumes CVSROOT has been set up correctly.
+function git-cvs-mirror {
+    if [ $# -lt 2 ] ; then
+        echo "Found $# arguments, needed 2"
+        echo "Usage git-cvs-mirror <module-name> <repo-name>"
+        return 1
+    fi
+    
+    if [ ! -n "$CVSROOT" ] ; then
+        echo "CVSROOT not set. Set to location of the cvsroot"
+        return 1
+    fi
+
+
+    GI_FLAGS="-p -x -v -d"
+    GI="git cvsimport"
+    
+    CVS_MOD=$1
+    REPO_NAME=$2
+
+    CVSIMPORT="$GI -C $REPO_NAME $GI_FLAGS $CVSROOT $CVS_MOD"
+ 
+
+    #GIT CVSIMPORT the module
+    $CVSIMPORT
+    #Create a bare clone to be the central version of truth
+    git clone --bare "$REPO_NAME" "$REPO_NAME.git"
+
+    #Create a branch to handle the CVS integration.
+    pushd .
+    if [ -d "$REPO_NAME" ] ; then
+        cd "$REPO_NAME"
+    else 
+        echo "Could not find dir $REPO_NAME. Did the cvsimport fail?"
+        return 1
+    fi
+    git checkout -b cvsintegration
+    git checkout master
+    popd 
+}
+
 function make-on-change {
     if [ $# -lt 2 ] ; then
         echo "Nothing to watch!"
