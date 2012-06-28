@@ -1,7 +1,7 @@
 Config { font = "xft:Sans-9:plain"
        , bgColor = "black"
        , fgColor = "grey"
-       , position = TopW L 90
+       , position = BottomW L 100
        , lowerOnStart = False
        , commands = [ 
                       Run Network "eth0" ["-L","0","-H","32","--normal","green","--high","red"] 10
@@ -15,5 +15,5 @@ Config { font = "xft:Sans-9:plain"
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{%cpu% | %eth0% - %eth1%  <fc=#ee9a00>%date%</fc>"
+       , template = "%StdinReader% }{<fc=#ee9a00>%date%</fc>"
        }
