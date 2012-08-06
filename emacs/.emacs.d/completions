@@ -1,0 +1,37 @@
+;;; Completion Initialization file.
+;; Version = 11
+;; Format is (<string> . <last-use-time>)
+;;  <string> is the completion
+;;  <last-use-time> is the time the completion was last used
+;;    If it is t, the completion will never be pruned from the file.
+;;    Otherwise it is in hours since origin.
+
+("exists" . 373340)
+("fresh_ty_var" . 373288)
+("fresh_reg_var" . 373319)
+("fresh_effect_var" . 373288)
+("fresh_effect_var::nil" . 373315)
+("has_type_effect" . 373340)
+("has_type_effect_cases" . 373288)
+("guarded_effects" . 373315)
+("guarded" . 373288)
+("guarded_effets" . 373340)
+("Admitted" . 373288)
+("Import" . 373288)
+("inversion" . 373288)
+("tae_check" . 373315)
+("TArrow" . 373288)
+("Constructors" . 373288)
+("makeidxlist" . 373319)
+("store_well_typed" . 373288)
+("effects" . 373340)
+("EffWrite" . 373288)
+("EffInit" . 373288)
+("varidxs" . 373319)
+("empty_ge" . 373340)
+("type_and_effect_check" . 373288)
+("Gelcchecker.*" . 373288)
+("GELC2.*" . 373288)
+("Gelcchecker" . 373288)
+("generalize" . 373315)
+("getrue" . 373340)
