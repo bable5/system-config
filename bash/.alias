@@ -5,10 +5,12 @@ alias la='ls -a'
 alias udiff='diff -u'
 
 alias svnignore='python /home/sean/bin/svnignore.py'
+alias git-recent-branches="git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname)' | cut -d / -f 3-"
 
 #from snippits.dzone.com/posts/show/4722
 alias svn-add-all-new='svn st | grep ^? | sed s/?// | xargs svn add $1'
 #end snippits.
+alias svn-del-unknown='svn st | grep ^? | sed s/?// | xargs rm $1'
 
 alias cvs-changes='cvs diff'
 alias cvs-up='cvs up -d'
@@ -16,8 +18,11 @@ alias cvs-up='cvs up -d'
 alias dnscheck='ping 208.67.222.222'
 
 alias playvideo='mplayer -fs -cache 8192'
+alias testdone='playvideo /usr/share/sounds/Kopete_Sent.ogg'
 
 alias jsca-src='cd /home/sean/src_code/workspace/static-commutativity-git'
 alias root-mysql='mysql --user=root -p'
 
-alias git-recent-branches="git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname)' | cut -d / -f 3-"
+alias tex-spell-check='aspell -t check' 
+
+

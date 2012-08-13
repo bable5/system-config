@@ -1,0 +1,26 @@
+[user]
+	name = Sean Mooney
+    email = bable4@gmail.com
+
+[alias]
+#from : https://git.wiki.kernel.org/index.php/Aliases
+    stat = status
+    co = checkout
+    hist = log --pretty=format:\"%Cgreen%h%Creset %ad | %s%d %Cblue[%an]%Creset \" --graph --date=short
+    type = cat-file -t
+    dump = cat-file -p
+    cec  = cvsexportcommit 
+
+    quick-summary = log --oneline -10
+    cvsmerge = merge --no-ff --log
+    cvsmerge-log-msg = log --date-order --reverse --pretty="%B---%n"
+    ignore-changes = update-index --assume-unchanged
+    track-changes = update-index --no-assume-unchanged
+    cvs-full-log = log --reverse --pretty=format:'%B\n--------------------------------------------\n'
+[color]
+	ui = auto
+[core]
+	excludesfile = /home/sean/.gitignore_global
+
+[url "git+ssh://bable5.homeip.net/git-repos/"]
+    insteadOf = b5:

@@ -63,7 +63,7 @@ if [ -x /usb/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-export CVSROOT=":extssh:smooney@pyrite.cs.iastate.edu:/home/other/design/cvsroot"
+export CVSROOT=":ext:smooney@pyrite.cs.iastate.edu:/home/other/design/cvsroot"
 
 alias java_jmx='java -Dcom.sun.management.jmxremote'
 #export LD_LIBRARY_PATH=/opt/dev_tools/tptpAC/bin:/opt/dev_tools/tptpAC/lib

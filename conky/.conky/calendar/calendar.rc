@@ -10,7 +10,7 @@ text_buffer_size       2048
 total_run_times        0
 update_interval        10.0
 
-alignment              br
+alignment              bl
 gap_x                  10
 gap_y                  10
 border_inner_margin    0

@@ -7,3 +7,9 @@ set sw=2
 set iskeyword+=:
 
 setl tw=79
+" Execute the make program explicitly.
+" Quick and dirty way to enable make on a button.
+" Somewhere latex suite changes the make definition
+" to invoke a latex build for a file.
+map <F6> :!make <CR>
+

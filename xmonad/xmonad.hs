@@ -29,6 +29,9 @@ import XMonad.Layout.MultiToggle
 --Themes
 import XMonad.Util.Themes
 
+--Sound
+--import XMonad.Actions.Volume
+
 main :: IO()
 main = xmonad =<< mooneyConfig
 
@@ -39,6 +42,8 @@ modm = mod4Mask
 
 mooneyConfig = do
     xmobar <- spawnPipe "xmobar"
+    spawn "conky"
+    spawn "/home/sean/.conky/schedule.sh 0"
     {- Is this call lugging the system?
      - mapM spawn ["thunderbird", "chromium-browser"]-}
     Main.setBackground
@@ -79,6 +84,8 @@ mooneyConfig = do
                                         , resource =? "chromium-browser" --> doF (W.shift "web")
                                         , className =? "Thunderbird" --> doF (W.shift "mail")
                                        , className =? "Eclipse" --> doF (W.shift "dev")
+                                       , className =? "Pithos" --> doF(W.shift "multimedia")
+                                       , className =? "JabRef" --> doF (W.shift "doc")
                                        ]
             newManageHook = myManageHook
 
@@ -92,7 +99,9 @@ mooneyConfig = do
 
 pictures = "/home/sean/Pictures"
 --bgimage = pictures ++ "/1440x900/HDFlare.jpg"
-bgimage = pictures ++ "/1600x1200/TechnoBlack.jpg"
+--bgimage = pictures ++ "/1600x1200/TechnoBlack.jpg"
+--bgimage = pictures ++ "/1440x900/forrest.jpg"
+bgimage = pictures ++ "/1680x1050/Stitched_Up.png"
 bgprog = "feh --bg-scale "
 setBackground = spawn $ bgprog ++ bgimage
 

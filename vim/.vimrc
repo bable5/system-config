@@ -8,6 +8,9 @@ set expandtab
 set number
 set mouse=a
 "set makeprg=ant\ -emacs
+"Show extra end of line whitespace
+set list
+set listchars=trail:.
 
 "folding: http://smartic.us/2009/04/06/code-folding-in-vim/
 "set foldmethod=indent   "fold based on indent

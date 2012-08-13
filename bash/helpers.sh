@@ -131,5 +131,15 @@ function make-on-change {
     done
 }
 
+#Adds a timestamp to the outputs of a program
+#From redditor WASDx on reddit script swap
+#http://www.reddit.com/r/commandline/comments/trx74/i_made_a_small_script_to_add_timestamps_to_output/
+function timestamp() {
+    while read line; do
+        clock=$(date '+(%H:%M:%S)')
+        echo "$clock $line"
+    done
+}
+
 complete -F _todo todo
 

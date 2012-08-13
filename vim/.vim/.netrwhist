@@ -1,5 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/home/sean/src_code/java/QualitasCorpus/QualitasCorpus-20101126r/Systems/fitjava/fitjava-1.1/src/examples'
-let g:netrw_dirhist_2='/home/sean/src_code/workspace/static-commutativity-git/src'
-let g:netrw_dirhist_3='/home/sean/.xmonad'
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/home/sean/Documents/GradSchool/src_code/Golak/boolean-to-ba/CVS'
+let g:netrw_dirhist_2='/home/sean/Documents/GradSchool/Papers/paper-modular-types/examples'
+let g:netrw_dirhist_3='/home/sean/Documents/GradSchool/CodeSnippets'
+let g:netrw_dirhist_4='/home/sean/Documents/GradSchool/CodeSnippets/Latex/annotated-bib-template'
+let g:netrw_dirhist_5='/home/sean/src_code/tracking/eopl3/chapter3/proc-lang'
+let g:netrw_dirhist_6='/home/sean/Documents/GradSchool/Papers/paper-comm-case-study'
+let g:netrw_dirhist_7='/usr/local/bin'
+let g:netrw_dirhist_8='/home/sean/.emacs.d'
+let g:netrw_dirhist_9='/home/sean/Documents/GradSchool/Papers/paper-modular-types/examples'
