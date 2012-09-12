@@ -42,6 +42,8 @@ use_xft                yes
 xftalpha               0.8
 xftfont                arial:pixelsize=12
 
+lua_load ~/.conky/draw_bg.lua
+lua_draw_hook_pre draw_bg
 
 TEXT
 ${color orange}TODO ${hr 2}$color
