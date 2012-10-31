@@ -73,3 +73,77 @@ function clone-missing-git-repos {
     done
 }
 
+function make-on-change {
+    if [ $# -lt 2 ] ; then
+        echo "Usage <dir>"
+    fi
+    dir=$1
+    while inotifywait -r -e modify $dir ; do
+        make
+    done
+}
+
+function tex-spellcheck {
+    for f in $@ ; do
+        aspell -t -c $f
+    done
+}
+
+# Create a git-controlled mirror of a CVS module
+# Assumes CVSROOT has been set up correctly.
+function git-cvs-mirror {
+    if [ $# -lt 2 ] ; then
+        echo "Found $# arguments, needed 2"
+        echo "Usage git-cvs-mirror <module-name> <repo-name>"
+        return 1
+    fi
+
+    if [ ! -n "$CVSROOT" ] ; then
+        echo "CVSROOT not set. Set to location of the cvsroot"
+        return 1
+    fi
+
+
+    GI="git cvsimport"
+    CVS_MOD=$1
+    REPO_NAME=$2
+    CVSIMPORT="$GI -C $REPO_NAME -d $CVSROOT -r cvs -k $CVS_MOD"
+
+    #GIT CVSIMPORT the module
+    $CVSIMPORT
+    #Create a bare clone to be the central version of truth
+    git clone --bare "$REPO_NAME" "$REPO_NAME.git"
+
+    #Create a branch to handle the CVS integration.
+    pushd .
+    if [ -d "$REPO_NAME" ] ; then
+        cd "$REPO_NAME"
+    else
+        echo "Could not find dir $REPO_NAME. Did the cvsimport fail?"
+        return 1
+    fi
+    git checkout -b cvsintegration
+    git checkout master
+    popd
+}
+
+function fix-git-ws-errors {
+    if git rev-parse --verify HEAD >/dev/null 2>&1 ; then
+       against=HEAD
+    else
+       # Initial commit: diff against an empty tree object
+       against=4b825dc642cb6eb9a060e54bf8d69288fbee4904
+    fi
+
+    #loop of the error messages from git diff-index looking for file/line number pairs to fix
+    for fix in $(git diff-index --check --cached HEAD -- | grep "whitespace" | cut -d":" -f1,2)
+    do
+       file=$(echo "$fix" | cut -d: -f1)
+       line=$(echo "$fix" | cut -d: -f2)
+
+       echo "Removing trailing whitespace from $fix"
+       sed -i.bak  "${line} s/[ \t]*$//" $file
+
+       rm "$file.bak"
+    done
+}
