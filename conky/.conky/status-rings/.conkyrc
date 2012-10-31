@@ -1,0 +1,81 @@
+# — Conky settings — #
+background no
+update_interval 1
+
+cpu_avg_samples 2
+net_avg_samples 2
+
+override_utf8_locale yes
+
+double_buffer yes
+no_buffers yes
+
+text_buffer_size 2048
+imlib_cache_size 0
+
+temperature_unit fahrenheit
+
+# — Window specifications — #
+
+own_window yes
+own_window_type override
+own_window_transparent yes
+own_window_hints undecorated,sticky,skip_taskbar,skip_pager,below
+
+border_inner_margin 0
+border_outer_margin 0
+
+minimum_size 984
+maximum_width 984
+
+alignment tr
+gap_x 1
+gap_y 0
+
+# — Graphics settings — #
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+
+# — Text settings — #
+use_xft yes
+xftfont caviar dreams:size=8
+xftalpha 0.5
+
+uppercase no
+
+default_color FFFFFF
+
+# — Lua Load — #
+	#lua_load ./.config/conky/clock_rings.lua
+	lua_load clock_rings.lua
+    lua_draw_hook_pre clock_rings
+
+TEXT
+${image /home/sean/.conky/conkyrings3/conkyringsbgnd.png}${voffset 3}${color 3399FF}${font caviar dreams:size=16}${time %A}${font}${voffset -8}${goto 140}${color FFFFFF}${font caviar dreams:size=32}${time %d}${font}
+${color FFFFFF}${voffset -25}${color 3399FF}${font caviar dreams:size=18}${time %b}${font}${voffset -3} ${color FFFFFF}${font caviar dreams:size=20}${time %Y}${font}${color 3399FF}${hr}
+${color FFFFFF}${voffset 48}${goto 879}${exec echo "#!"}${color 3399FF}${sysname}
+${goto 874}${color 003399}$uptime_short${voffset 80}
+${color FFFFFF}${goto 273}${voffset -202}${weather http://xoap.weather.com/weather/local/ 65101 temperature 30}°F
+${color 3399FF}${goto 273}home
+${color FFFFFF}${goto 395}${voffset -32}${battery_short BAT0}
+${color 3399FF}${goto 395}batt
+${color FFFFFF}${goto 515}${voffset -32}${wireless_link_qual_perc wlan0}%
+${color 3399FF}${goto 515}wifi
+${color FFFFFF}${goto 635}${voffset -32}${cpu cpu0}%
+${color 3399FF}${goto 635}cpu
+${color FFFFFF}${goto 755}${voffset -32}${memperc}%
+${color 3399FF}${goto 755}mem
+${color FFFFFF}${goto 875}${voffset -32}${fs_used_perc /}%
+${color 3399FF}${goto 875}hdd
+
+
+
+
+
+
+
+
+
+ 

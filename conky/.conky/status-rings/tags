@@ -1,0 +1,13 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+conky_clock_hands	clock_rings.lua	/^function conky_clock_hands()$/;"	f
+conky_clock_rings	clock_rings.lua	/^function conky_clock_rings()$/;"	f
+draw_clock_hands	clock_rings.lua	/^function draw_clock_hands(cr,xc,yc)$/;"	f
+draw_ring	clock_rings.lua	/^function draw_ring(cr,t,pt)$/;"	f
+it will cause a segmentation fault if it tries to draw a ring straight away. The if statement on line 145 uses a delay to make sure that this doesn't happen. It calculates the length of the delay by the number of updates since Conky started. Generally, a value of 5s is long enough, so if you update Conky every 1s, use update_num>5 in that if statement 	clock_rings.lua	/^IMPORTANT: if you are using the 'cpu' function, it will cause a segmentation fault if it tries to draw a ring straight away. The if statement on line 145 uses a delay to make sure that this doesn't happen. It calculates the length of the delay by the number of updates since Conky started. Generally, a value of 5s is long enough, so if you update Conky every 1s, use update_num>5 in that if statement (the default). If you only update Conky every 2s, you should change it to update_num>3; conversely if you update Conky every 0.5s, you should use update_num>10. ALSO, if you change your Conky, is it best to use "killall conky; conky" to update it, otherwise the update_num will not be reset and you will get an error.$/;"	f
+rgb_to_r_g_b	clock_rings.lua	/^function rgb_to_r_g_b(colour,alpha)$/;"	f
+setup_rings	clock_rings.lua	/^	local function setup_rings(cr,pt)$/;"	f

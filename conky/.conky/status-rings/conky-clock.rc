@@ -1,0 +1,76 @@
+# — Conky settings — #
+background no
+update_interval 1
+
+cpu_avg_samples 2
+net_avg_samples 2
+
+override_utf8_locale yes
+
+double_buffer yes
+no_buffers yes
+
+text_buffer_size 2048
+imlib_cache_size 0
+
+temperature_unit fahrenheit
+
+# — Window specifications — #
+
+own_window yes
+own_window_type override
+own_window_transparent yes
+own_window_hints undecorated,sticky,skip_taskbar,skip_pager,below
+
+border_inner_margin 0
+border_outer_margin 0
+
+minimum_size 400, 800
+maximum_width 400
+
+alignment tr
+gap_x 600
+gap_y 25
+
+# — Graphics settings — #
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+
+# — Text settings — #
+use_xft yes
+xftfont caviar dreams:size=8
+xftalpha 0.5
+
+uppercase no
+
+default_color FFFFFF
+
+# — Lua Load — #
+	#lua_load ./.config/conky/clock_rings.lua
+	lua_load clock_rings.lua
+    lua_draw_hook_pre clock_rings
+
+TEXT
+Hello
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+End 
