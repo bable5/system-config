@@ -128,6 +128,18 @@ function git-cvs-mirror {
 }
 
 function fix-git-ws-errors {
+    gitroot=$(git rev-parse --show-toplevel)
+
+    if [ -z "$gitroot" ] ; then
+        echo "Not a git repo. Exiting."
+        return 1
+    else
+        #save the curren dir to return to when finished
+        pushd .
+        #move to the root, ensure path names correct
+        cd "$gitroot"
+    fi
+
     if git rev-parse --verify HEAD >/dev/null 2>&1 ; then
        against=HEAD
     else
@@ -146,4 +158,7 @@ function fix-git-ws-errors {
 
        rm "$file.bak"
     done
+
+    #Leave things where they were.
+    popd
 }
