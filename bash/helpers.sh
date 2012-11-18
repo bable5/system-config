@@ -131,6 +131,43 @@ function make-on-change {
     done
 }
 
+
+function fix-git-ws-errors {
+    gitroot=$(git rev-parse --show-toplevel)
+
+    if [ -z "$gitroot" ] ; then
+        echo "Not a git repo. Exiting."
+        return 1
+    else
+        #save the curren dir to return to when finished
+        pushd .
+        #move to the root, ensure path names correct
+        cd "$gitroot"
+    fi
+
+    if git rev-parse --verify HEAD >/dev/null 2>&1 ; then
+       against=HEAD
+    else
+       # Initial commit: diff against an empty tree object
+       against=4b825dc642cb6eb9a060e54bf8d69288fbee4904
+    fi
+
+    #loop of the error messages from git diff-index looking for file/line number pairs to fix
+    for fix in $(git diff-index --check --cached HEAD -- | grep "whitespace" | cut -d":" -f1,2)
+    do
+       file=$(echo "$fix" | cut -d: -f1)
+       line=$(echo "$fix" | cut -d: -f2)
+
+       echo "Removing trailing whitespace from $fix"
+       sed -i.bak  "${line} s/[ \t]*$//" $file
+
+       rm "$file.bak"
+    done
+
+    #Leave things where they were.
+    popd
+}
+
 #Adds a timestamp to the outputs of a program
 #From redditor WASDx on reddit script swap
 #http://www.reddit.com/r/commandline/comments/trx74/i_made_a_small_script_to_add_timestamps_to_output/
