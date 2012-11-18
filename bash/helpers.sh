@@ -131,6 +131,11 @@ function make-on-change {
     done
 }
 
+function tex-spellcheck {
+    for f in $@ ; do
+        aspell -t -c $f
+    done
+}
 
 function fix-git-ws-errors {
     gitroot=$(git rev-parse --show-toplevel)
