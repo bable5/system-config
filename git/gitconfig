@@ -9,15 +9,28 @@
     stat = status
     co = checkout
     graphviz = "!f() { echo 'digraph git {' ; git log --pretty='format:  %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}'; }; f"
-    cvsmerge = merge --no-ff --log
     quick-summary = log --oneline -10
     hist = log --pretty=format:\"%Cgreen%h%Creset %ad | %s%d %Cblue[%an]%Creset \" --graph --date=short
-    cvs-full-log = log --pretty=format:'%B\n--------------------------------------------'
     ignore-changes = update-index --assume-unchanged
+#Mange CVS/GIT cross-useage
     track-changes = update-index --no-assume-unchanged
+    cvs-full-log = log --reverse --pretty=format:'%B\n--------------------------------------------\n'
+    cvsmerge = merge --no-ff --log
+    cec = cvsexportcommit -u -p -c
+
+#From : http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
+    ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    filelog = log -u
+    #grep for string
+    gs = grep -Ii
+
+    news = log -p HEAD@{1}..HEAD@{0}
+
 [core]
 	editor = vim
 	excludesfile = /home/sean/.gitignore_global
+	autocrlf = input
 
 [url "git+ssh://bable5.homeip.net/git-repos/"]
     insteadOf = b5:
@@ -25,3 +38,8 @@
 [url "git+ssh://gkar"]
     insteadof = gkar:
 
+[url "git+ssh://zooty"]
+    insteadof = zooty:
+
+[push]
+	default = upstream
