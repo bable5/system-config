@@ -14,16 +14,26 @@ set tags+=.tags
 set nofoldenable
 set foldmethod=syntax
 
+
 syntax on
+
+set list
+set listchars=tab:▸\ ,trail:⋅,nbsp:⋅
 
 " status line information
 set laststatus=2
 set statusline=%f\ %m\ %{fugitive#statusline()}\ %=%([%l,%v\-%P]%)
 
+"color scheme
+:colorscheme desert
+
 " VimTip 1386
 " Better word suggestion on ^p
 :set completeopt=longest,menuone
 :inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Haddock browser for haskell mode plugin.
+let g:haddock_browser="/usr/bin/chromium-browser"
 
 " ~/.vimrc (configuration file for vim only)
 " skeletons
@@ -64,13 +74,23 @@ autocmd BufNewFile	*.spec	call SKEL_spec()
 filetype plugin on
 filetype indent on
 
+" For texsuite
+set grepprg=grep\ -nH\ $*
+let g:tex_flavor='latex'
+set clipboard=unnamed
+
+" Use the system clipboard for the unamed buffer. Yank between terminals, etc.
+
+
 " Toggle line numbers
 map <F1> :set nu!<CR>
 " Map NERDTree shortcut
 map <F2> :NERDTreeToggle<CR>
+map <C-F2> :JavaBrowser<CR>
 map <F3> :set paste!<CR>
 map <F5> :make<CR>
 " Generate tags for cxx project
+map <C-F11> :JavaBrowser<CR>
 map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 " ~/.vimrc ends here
