@@ -10,7 +10,7 @@
     co = checkout
     graphviz = "!f() { echo 'digraph git {' ; git log --pretty='format:  %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}'; }; f"
     quick-summary = log --oneline -10
-    hist = log --pretty=format:\"%Cgreen%h%Creset %ad | %s%d %Cblue[%an]%Creset \" --graph --date=short
+    hist = log --pretty=format:\"%Cgreen%h%Creset %ad | %s%Cred%d %Cblue[%an]%Creset \" --graph --date=short
     ignore-changes = update-index --assume-unchanged
 #Mange CVS/GIT cross-useage
     track-changes = update-index --no-assume-unchanged
