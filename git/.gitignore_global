@@ -4,8 +4,10 @@
 *.class
 *.o
 *.so
+#*.pyc
 
 #Editor files#
 *.bak
 *.sw[p|o]
 *.log
+*~
