@@ -78,8 +78,9 @@ function make-on-change {
         echo "Usage <dir>"
     fi
     dir=$1
+    makewhat=$2
     while inotifywait -r -e modify $dir ; do
-        make
+        make $makewhat
     done
 }
 
@@ -154,7 +155,7 @@ function fix-git-ws-errors {
        line=$(echo "$fix" | cut -d: -f2)
 
        echo "Removing trailing whitespace from $fix"
-       sed -i.bak  "${line} s/[ \t]*$//" $file
+       sed -i.bak  "${line} s/[[:space:]]*$//" $file
 
        rm "$file.bak"
     done
@@ -162,3 +163,16 @@ function fix-git-ws-errors {
     #Leave things where they were.
     popd
 }
+
+function find-todos {
+    if [ $# -lt 1 ] ; then
+        echo "Found $# arguments, needed at least 1."
+        echo "Usage find-todos <files-to-search>"
+        return 1
+    fi
+
+    for f in $* ; do
+        grep -Rni 'todo\|fixme' "$f" | sed -r 's/^([^:]*:[0-9]*:)[ \t\/\*]*(.*)/\2: \1/' | sort
+    done
+}
+
