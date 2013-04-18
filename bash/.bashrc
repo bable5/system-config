@@ -115,9 +115,12 @@ fi
 # exporting environment variables
 export CVSROOT=":ext:smooney@pyrite.cs.iastate.edu:/home/other/design/cvsroot"
 export CVS_RSH=ssh
+export EDITOR=vim
 #export JAVA_HOME=/usr/lib/jvm/java-6-sun
 export JAVA_HOME=/usr/lib/jvm/java-6-openjdk/
 export CASTROID_HOME=/home/sean/srccode/android/CastRoid_alaQ87
+export PANC_HOME=/opt/DevTools/panini
+alias panc='$PANC_HOME/bin/panc'
 
 #useful aliases
 alias ipc='ping google.com -c5'
@@ -138,6 +141,7 @@ alias jdecompile='java -cp .:/opt/CompilerTools/sootNsmoke.jar COM.sootNsmoke.oo
 alias eclipse3_6='/opt/DevTools/eclipse-helios/eclipse'
 alias eclipse_adt='/opt/DevTools/eclipse-3.6-Android/eclipse'
 alias android='/opt/android-sdk/tools/android'
+alias clb='latexmk -pdf -pvc'
 alias cvs-up='cvs up -d'
 
 alias cvs-add-all-new='cvs status|grep ^?|sed s/?//|xargs cvs add $1'
@@ -152,33 +156,31 @@ alias cd-ccs='cd /home/sean/srccode/java/analysis_examples/comm-case-study'
 
 alias hibernate='sudo /etc/acpi/hibernate.sh'
 
+#From a redditor.
+#http://www.reddit.com/r/commandline/comments/w0x1a/i_made_a_shell_script_that_displays_a_random_man/c59am7q
+alias randomman='man $(ls /usr/share/man/man1 | shuf | head -n 1 | cut -d '.' -f 1)'
+
 alias testdone='playsound /usr/share/sounds/KDE-Sys-App-Negative.ogg'
 alias playvideo='mplayer -fs'
 alias nmaphome='nmap -sP 192.168.1.0/24'
 
 alias git-recent-branches="git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname)' | cut -d / -f 3-"
 
+
 alias mineserv='java -jar -Xmx1024M -Xms1024M /home/sean/bin/minecraft/minecraft_server.jar'
 alias minecraft='java -jar -Xmx1024M -Xms512M /home/sean/bin/minecraft/minecraft.jar'
 
+#Set up a proxy through ssh. Must supply the port and host.
+alias sshproxy='ssh -N -D'
 #PAN_CP=.:/home/sean/.bin/panini_rt.jar
 
-export GOROOT=/opt/CompilerTools/go
-export GOARCH=amd64
-export GOOS=linux
-export GOBIN=$GOROOT/bin
-alias 6g='$GOBIN/6g'
-alias 6l='$GOBIN/61'
-
-
-#PATH=$PATH:$GOBIN
 export ANDROID_HOME=/opt/android-sdk
-PATH=$PATH:/usr/games:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+PATH=~/bin:~/.cabal/bin:/usr/games:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
 
-PATH=$PATH:~/.cabal/bin:/home/sean/bin
+#PATH=$PATH:~/.cabal/bin:/home/sean/bin
 
 #prefer the local version of cabal
-alias cabal=/home/sean/.cabal/bin/cabal
+#alias cabal=/home/sean/.cabal/bin/cabal
 
 branch_color=$'\e[1;35m'
 normal_colors=$'\e[m'
