@@ -7,7 +7,7 @@ set showmatch
 set expandtab
 set number
 set mouse=a
-set makeprg=ant\ -emacs
+autocmd filetype java set makeprg=ant\ -emacs
 
 set tags+=.tags
 
