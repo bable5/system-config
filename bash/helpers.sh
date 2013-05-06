@@ -81,38 +81,37 @@ function git-cvs-mirror {
         echo "Usage git-cvs-mirror <module-name> <repo-name>"
         return 1
     fi
-    
+
     if [ ! -n "$CVSROOT" ] ; then
         echo "CVSROOT not set. Set to location of the cvsroot"
         return 1
     fi
 
 
-    GI_FLAGS="-p -x -v -d"
     GI="git cvsimport"
-    
     CVS_MOD=$1
     REPO_NAME=$2
-
-    CVSIMPORT="$GI -C $REPO_NAME $GI_FLAGS $CVSROOT $CVS_MOD"
- 
+    CVSIMPORT="$GI -C $REPO_NAME -d $CVSROOT -r cvs -k $CVS_MOD"
 
     #GIT CVSIMPORT the module
     $CVSIMPORT
-    #Create a bare clone to be the central version of truth
-    git clone --bare "$REPO_NAME" "$REPO_NAME.git"
 
     #Create a branch to handle the CVS integration.
-    pushd .
     if [ -d "$REPO_NAME" ] ; then
+        pushd .
         cd "$REPO_NAME"
-    else 
+
+        git checkout -b cvsintegration
+        git checkout master
+        git config cvsimport.r cvs
+        git config cvsimport.d $CVSROOT
+        git config cvsimport.module $CVS_MOD
+
+        popd
+    else
         echo "Could not find dir $REPO_NAME. Did the cvsimport fail?"
         return 1
     fi
-    git checkout -b cvsintegration
-    git checkout master
-    popd 
 }
 
 function make-on-change {
