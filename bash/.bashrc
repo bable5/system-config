@@ -44,10 +44,12 @@ if [ -f /etc/bash_completion ]; then
 	. /etc/bash_completion
 fi
 
+if [ -n "$SSH_CLIENT" ]; then LBLSSH=":via-ssh"
+fi
 green=$'\e[1;32m'
 branch_color=$'\e[1;35m'
 normal_colors=$'\e[m'
-PS1="\u\[\033[1;31m\]@\h\[\033[0;33m\]\[\033[0m\]:\W\[\033[0m\]\[$branch_color\]\$git_branch\[$normal_colors\]\$ "
+PS1="\u\[\033[1;31m\]@\h$LBLSSH\[\033[0;33m\]\[\033[0m\]:\W\[\033[0m\]\[$branch_color\]\$git_branch\[$normal_colors\]\$ "
 
 # set a fancy prompt
 case "$TERM" in 
