@@ -101,5 +101,9 @@ function find_git_branch {
 
 PROMPT_COMMAND="find_git_branch; $PROMPT_COMMAND"
 
+#java display workaround for XMonad
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+
 source /home/sean/bin/helpers.sh
 
