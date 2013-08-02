@@ -33,6 +33,8 @@
     #grep for string
     gs = grep -Ii
 
+#Headlines are like news, but just the summaries.
+    headlines = log --oneline HEAD@{1}..HEAD@{0}
     news = log -p HEAD@{1}..HEAD@{0}
 
 #From: http://smalltalk.gnu.org/blog/bonzinip/using-git-without-feeling-stupid-part-2
@@ -54,3 +56,9 @@
 
 [push]
 	default = upstream
+[sendemail]
+	smtpencryption = tls
+	smtpserver = smtp.gmail.com
+	smtpuser = bable4@gmail.com
+	smtpserverport = 587
+	chainreplyto = false
