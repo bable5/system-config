@@ -9,6 +9,11 @@ set number
 set mouse=a
 autocmd filetype java set makeprg=ant\ -emacs
 
+set wildmenu
+set wildignore=*.class,*.pyc
+set path=**
+set suffixesadd=.java,.py,.xml
+
 set tags+=.tags
 
 set nofoldenable
