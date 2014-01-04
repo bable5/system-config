@@ -1,3 +1,4 @@
+set nocompatible
 set tabstop=4
 set shiftwidth=4
 set autoindent
@@ -7,7 +8,6 @@ set showmatch
 set expandtab
 set number
 set mouse=a
-autocmd filetype java set makeprg=ant\ -emacs
 
 set wildmenu
 set wildignore=*.class,*.pyc
@@ -19,9 +19,38 @@ set tags+=.tags
 set nofoldenable
 set foldmethod=syntax
 
+filetype off		" required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required
+Bundle 'gmarik/vundle'
+
+Bundle 'tpope/vim-fugitive'
+Bundle 'scrooloose/nerdtree'
+Bundle 'Twinside/vim-haskellFold'
+" Django Testing
+Bundle 'https://github.com/JarrodCTaylor/vim-python-test-runner'
+" Syntax checking
+Bundle 'https://github.com/scrooloose/syntastic'
+" Haskell Dev
+Bundle 'bitc/vim-hdevtools'
+" Tag Bar
+Bundle 'majutsushi/tagbar'
+" Indenting
+Bundle 'godlygeek/tabular'
+"Editing
+Bundle 'junegunn/goyo.vim'
+"Auto Completion
+" Needs vim 7.3.885+ with lua. Haven't gotten it built yet.
+Bundle 'Shougo/neocomplete.vim'
+
+filetype plugin indent on " required!
 
 syntax on
-
+let mapleader = ","
 set list
 set listchars=tab:▸\ ,trail:⋅,nbsp:⋅
 
@@ -40,45 +69,6 @@ set statusline=%f\ %m\ %{fugitive#statusline()}\ %=%([%l,%v\-%P]%)
 " Haddock browser for haskell mode plugin.
 let g:haddock_browser="/usr/bin/chromium-browser"
 
-" ~/.vimrc (configuration file for vim only)
-" skeletons
-function! SKEL_spec()
-	0r /usr/share/vim/current/skeletons/skeleton.spec
-	language time en_US
-	if $USER != ''
-	    let login = $USER
-	elseif $LOGNAME != ''
-	    let login = $LOGNAME
-	else
-	    let login = 'unknown'
-	endif
-	let newline = stridx(login, "\n")
-	if newline != -1
-	    let login = strpart(login, 0, newline)
-	endif
-	if $HOSTNAME != ''
-	    let hostname = $HOSTNAME
-	else
-	    let hostname = system('hostname -f')
-	    if v:shell_error
-		let hostname = 'localhost'
-	    endif
-	endif
-	let newline = stridx(hostname, "\n")
-	if newline != -1
-	    let hostname = strpart(hostname, 0, newline)
-	endif
-	exe "%s/specRPM_CREATION_DATE/" . strftime("%a\ %b\ %d\ %Y") . "/ge"
-	exe "%s/specRPM_CREATION_AUTHOR_MAIL/" . login . "@" . hostname . "/ge"
-	exe "%s/specRPM_CREATION_NAME/" . expand("%:t:r") . "/ge"
-	setf spec
-endfunction
-autocmd BufNewFile	*.spec	call SKEL_spec()
-
-" filetypes
-filetype plugin on
-filetype indent on
-
 " For texsuite
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor='latex'
@@ -89,6 +79,7 @@ set clipboard=unnamed
 
 " Toggle line numbers
 map <F1> :set nu!<CR>
+map <F1> :set relativenumber!<CR>
 " Map NERDTree shortcut
 map <F2> :NERDTreeToggle<CR>
 map <C-F2> :JavaBrowser<CR>
@@ -97,5 +88,22 @@ map <F5> :make<CR>
 " Generate tags for cxx project
 map <C-F11> :JavaBrowser<CR>
 map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+
+" Django Testing Shortcuts
+nnoremap<Leader>da :DjangoTestApp<CR>
+nnoremap<Leader>df :DjangoTestFile<CR>
+nnoremap<Leader>dc :DjangoTestClass<CR>
+nnoremap<Leader>dm :DjangoTestMethod<CR>
+nnoremap<Leader>nf :NosetestFile<CR>
+nnoremap<Leader>nc :NosetestClass<CR>
+nnoremap<Leader>nm :NosetestMethod<CR>
+nnoremap<Leader>rr :RerunLastTests<CR>
+
+" Haskell
+map <silent> tu :call GHC_BrowseAll()<CR>
+map <silent> tw :call GHC_ShowType(1)<CR>
+au FileType haskell nnoremap <buffer> <F4> :HdevtoolsType<CR>
+au FileType haskell nnoremap <buffer> <silent> <F5> :HdevtoolsClear<CR>
+au FileType haskell nnoremap <buffer> <silent> <F6> :HdevtoolsInfo<CR>
 
 " ~/.vimrc ends here

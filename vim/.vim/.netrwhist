@@ -1,10 +1,3 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
-let g:netrw_dirhist_1='/home/sean/Documents/GradSchool/src_code/AMESMarket/TEST-DATA'
-let g:netrw_dirhist_2='/home/sean/Documents/GradSchool/src_code/AMESMarket/TEST-DATA/5BusSCEDComparison'
-let g:netrw_dirhist_3='/home/sean/srccode/webdev/SineIllusionShiny/js'
-let g:netrw_dirhist_4='/home/sean/srccode/webdev/SineIllusionShiny/www/js'
-let g:netrw_dirhist_5='/home/sean/srccode/gitolite-admin/conf'
-let g:netrw_dirhist_6='/home/sean/Documents/GradSchool/LabPapers/panini/modules/papers/concept/tex-helpers'
-let g:netrw_dirhist_7='/home/sean/Documents/GradSchool/LabPapers/panini/modules/papers/concept/reviews'
-let g:netrw_dirhist_8='/opt/DevTools/panini/bin'
+let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_1='/home/sean/.vim'
