@@ -10,3 +10,7 @@ package { ['git', 'subversion']:
   ensure => installed
 }
 
+package { ['vim-nox']:
+  ensure => installed
+}
+
