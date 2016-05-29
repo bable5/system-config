@@ -1,4 +1,4 @@
-set nocompatible
+set nocompatible	" required for improved
 set tabstop=4
 set shiftwidth=4
 set autoindent
@@ -18,14 +18,13 @@ set tags+=.tags
 
 set nofoldenable
 set foldmethod=syntax
-
 filetype off		" required!
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-" let Vundle manage Vundle
-" required
-Bundle 'gmarik/vundle'
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 
 Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/nerdtree'
@@ -51,9 +50,10 @@ Bundle 'rodjek/vim-puppet'
 " Needs vim 7.3.885+ with lua.
 Bundle 'Shougo/neocomplete.vim'
 
-filetype plugin indent on " required!
-
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
 syntax on
+filetype plugin indent on    " required
 let mapleader = ","
 set list
 set listchars=tab:▸\ ,trail:⋅,nbsp:⋅
@@ -77,9 +77,6 @@ let g:haddock_browser="/usr/bin/chromium-browser"
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor='latex'
 set clipboard=unnamed
-
-" Use the system clipboard for the unamed buffer. Yank between terminals, etc.
-
 
 " Toggle line numbers
 map <F1> :set nu!<CR>
@@ -173,3 +170,4 @@ if !exists('g:neocomplete#sources#omni#input_patterns')
 endif
 
 " ~/.vimrc ends here
+
