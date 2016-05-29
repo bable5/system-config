@@ -6,10 +6,12 @@
     ui = auto
 [diff]
     renames = true
+	algorithm = patience
 [alias]
     current-commit = rev-parse --short HEAD
 #from : https://git.wiki.kernel.org/index.php/Aliases
     stat = status
+    st = status
     co = checkout
     graphviz = "!f() { echo 'digraph git {' ; git log --pretty='format:  %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}'; }; f"
     quick-summary = log --oneline -10
@@ -62,3 +64,4 @@
 	smtpuser = bable4@gmail.com
 	smtpserverport = 587
 	chainreplyto = false
+
