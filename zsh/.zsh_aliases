@@ -1,0 +1,16 @@
+export WORKON_HOME=~/.Envs
+mkdir -p $WORKON_HOME
+source /usr/local/bin/virtualenvwrapper.sh
+
+# some more ls aliases
+alias lg='ls --group-directories-first'
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+alias nmaphome='nmap -sP 192.168.1.0/24'
+
+export EDITOR=vim
+
+source /home/sean/bin/helpers.sh
+
