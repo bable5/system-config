@@ -6,7 +6,7 @@ package { ['build-essential', 'ghc', 'cabal-install']:
   ensure => installed,
 }
 
-package { ['curl', 'wget', 'nmap']:
+package { ['curl', 'wget', 'nmap', 'htop']:
   ensure => installed,
 }
 
@@ -25,5 +25,9 @@ package { ['aptitude', 'tmux', 'zsh']:
 package { ['virtualenv', 'virtualenvwrapper']:
   provider => pip,
   ensure   => installed,
+}
+
+package { ['fortune', 'cowsay']:
+  ensure => installed,
 }
 
