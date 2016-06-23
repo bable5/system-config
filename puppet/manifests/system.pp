@@ -18,7 +18,7 @@ package { ['vim-nox']:
   ensure => installed,
 }
 
-package { ['aptitude', 'tmux', 'zsh']:
+package { ['aptitude', 'dtrx', 'tmux', 'zsh']:
   ensure => installed,
 }
 
