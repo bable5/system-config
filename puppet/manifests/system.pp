@@ -22,7 +22,7 @@ package { ['aptitude', 'dtrx', 'tmux', 'zsh']:
   ensure => installed,
 }
 
-package { ['virtualenv', 'virtualenvwrapper']:
+package { ['autoenv', 'virtualenv', 'virtualenvwrapper']:
   provider => pip,
   ensure   => installed,
 }
