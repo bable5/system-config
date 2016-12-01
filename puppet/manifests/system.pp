@@ -1,8 +1,9 @@
+
  package { ['ant', 'maven', 'python-pip']:
    ensure => installed,
  }
 
-package { ['build-essential', 'ghc', 'cabal-install']:
+package { ['build-essential', 'cmake', 'ghc', 'cabal-install']:
   ensure => installed,
 }
 
@@ -19,6 +20,10 @@ package { ['vim-nox']:
 }
 
 package { ['aptitude', 'dtrx', 'tmux', 'zsh']:
+  ensure => installed,
+}
+
+package { ['apt-transport-https', 'ca-certificates']:
   ensure => installed,
 }
 
