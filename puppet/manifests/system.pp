@@ -29,10 +29,18 @@ package { ['apt-transport-https', 'ca-certificates']:
 
 package { ['autoenv', 'virtualenv', 'virtualenvwrapper']:
   provider => pip,
+  require  => Package['python-pip'],
   ensure   => installed,
 }
 
 package { ['fortune', 'cowsay']:
   ensure => installed,
 }
+
+user { 'sean':
+  ensure  => present,
+  require => Package['zsh'],
+  shell   => '/bin/zsh',
+}
+
 
