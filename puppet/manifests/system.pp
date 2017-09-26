@@ -23,6 +23,10 @@ package { ['aptitude', 'dtrx', 'tmux', 'zsh']:
   ensure => installed,
 }
 
+package { ['exfat-fuse', 'exfat-utils']:
+  ensure => installed
+}
+
 package { ['apt-transport-https', 'ca-certificates']:
   ensure => installed,
 }
