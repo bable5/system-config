@@ -3,7 +3,7 @@
    ensure => installed,
  }
 
-package { ['build-essential', 'cmake', 'ghc', 'cabal-install']:
+package { ['build-essential', 'cmake', 'ghc', 'cabal-install', 'python-setuptools']:
   ensure => installed,
 }
 
@@ -33,7 +33,7 @@ package { ['apt-transport-https', 'ca-certificates']:
 
 package { ['autoenv', 'virtualenv', 'virtualenvwrapper']:
   provider => pip,
-  require  => Package['python-pip'],
+  require  => Package['python-pip', 'python-setuptools'],
   ensure   => installed,
 }
 
