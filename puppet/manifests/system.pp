@@ -31,7 +31,7 @@ package { ['apt-transport-https', 'ca-certificates']:
   ensure => installed,
 }
 
-package { ['autoenv', 'virtualenv', 'virtualenvwrapper']:
+package { ['autoenv', 'docker-compose', 'virtualenv', 'virtualenvwrapper']:
   provider => pip,
   require  => Package['python-pip', 'python-setuptools'],
   ensure   => installed,
