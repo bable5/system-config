@@ -1,13 +1,12 @@
-
- package { ['ant', 'maven', 'python-pip']:
-   ensure => installed,
- }
-
-package { ['build-essential', 'cmake', 'ghc', 'cabal-install', 'python-setuptools']:
+package { ['ant', 'maven', 'python-pip',
+  'build-essential', 'cmake', 'ghc', 'cabal-install',
+  'python-setuptools']:
   ensure => installed,
 }
 
-package { ['curl', 'wget', 'nmap', 'htop']:
+package { ['curl', 'wget', 'nmap', 'htop',
+    'openssh-server', 'molly-guard',
+  ]:
   ensure => installed,
 }
 
