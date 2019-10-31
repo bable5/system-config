@@ -4,7 +4,7 @@ package { ['ant', 'maven', 'python-pip',
   ensure => installed,
 }
 
-package { ['libssl-dev']
+package { ['libssl-dev']:
   ensure => installed,
 }
 
