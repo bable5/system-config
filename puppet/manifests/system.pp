@@ -4,6 +4,10 @@ package { ['ant', 'maven', 'python-pip',
   ensure => installed,
 }
 
+package { ['libssl-dev']
+  ensure => installed,
+}
+
 package { ['curl', 'wget', 'nmap', 'htop',
     'openssh-server', 'molly-guard',
   ]:
