@@ -8,6 +8,10 @@ package { ['libssl-dev']:
   ensure => installed,
 }
 
+package { ['jq']:
+  ensure =>  installed,
+}
+
 package { ['curl', 'wget', 'nmap', 'htop',
     'openssh-server', 'molly-guard',
   ]:
