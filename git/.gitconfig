@@ -13,6 +13,7 @@
     stat = status
     st = status
     co = checkout
+    nudge="commit --amend --no-edit"
     # From http://blogs.atlassian.com/2014/10/advanced-git-aliases/
     delete-merged = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
     graphviz = "!f() { echo 'digraph git {' ; git log --pretty='format:  %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}'; }; f"
