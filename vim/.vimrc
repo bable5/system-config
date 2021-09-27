@@ -163,6 +163,7 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
