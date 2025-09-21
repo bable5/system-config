@@ -50,6 +50,9 @@
 	excludesfile = /home/sean/.gitignore_global
 	autocrlf = input
 
+[init]
+	defaultBranch = main
+
 [url "git+ssh://bable5.homeip.net/git-repos/"]
     insteadOf = b5:
 
